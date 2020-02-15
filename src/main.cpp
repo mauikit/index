@@ -6,9 +6,7 @@
 #include "index.h"
 #include "inx.h"
 
-#if defined APPIMAGE_PACKAGE && defined MAUIKIT_STYLE
 #include <MauiKit/mauikit.h>
-#endif
 
 #ifdef Q_OS_ANDROID
 #include <QGuiApplication>
@@ -38,9 +36,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 	QApplication app(argc, argv);
 #endif
 
-#ifdef MAUIKIT_STYLE
-	MauiKit::getInstance().initResources();
-#endif
+    MauiKit::getInstance().initResources();
 
 	app.setApplicationName(INX::appName);
 	app.setApplicationVersion(INX::version);

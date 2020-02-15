@@ -7,7 +7,6 @@ set(REQUIRED_KF5_VERSION 5.60)
 
 find_package(ECM ${REQUIRED_KF5_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${ECM_MODULE_PATH})
-option(MAUIKIT_STYLE "If set to true then the icons and styled is packaged as well")
 
 option(IS_APPIMAGE_PACKAGE "If set to true then the KF5 libraries are linked")
 
