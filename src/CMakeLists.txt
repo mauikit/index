@@ -9,10 +9,6 @@ if(IS_APPIMAGE_PACKAGE)
     target_compile_definitions(index PUBLIC APPIMAGE_PACKAGE)
 endif()
 
-if(MAUIKIT_STYLE)
-    target_compile_definitions(index PUBLIC MAUIKIT_STYLE)
-endif()
-
 if (ANDROID)
     target_link_libraries(index Qt5::AndroidExtras)
     kde_source_files_enable_exceptions(index index.cpp)
