@@ -17,7 +17,7 @@ CompressedFileModel::CompressedFileModel(QObject * parent) : MauiList(parent)
 
 FMH::MODEL_LIST CompressedFileModel::items() const
 {
-	return m_list;
+    return m_list;
 }
 
 void CompressedFileModel::setUrl(const QUrl & url)
@@ -49,9 +49,9 @@ void CompressedFileModel::setUrl(const QUrl & url)
 			if(!m_url.isLocalFile ())
 				return;
 
-			qDebug() << "@gadominguez File:fm.cpp Funcion: extractFile  " << where.toString();
+            qDebug() << "@gadominguez File:fm.cpp Funcion: extractFile  " << where.toString() << " " << directory;
 
-			QString where_ = where.toLocalFile ()+"/"+directory;
+            QString where_ = where.toLocalFile () + "/" + directory;
 
 			KArchive *kArch = CompressedFile::getKArchiveObject(m_url);
 			kArch->open(QIODevice::ReadOnly);
