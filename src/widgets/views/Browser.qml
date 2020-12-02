@@ -44,6 +44,8 @@ Item
 
     opacity: _splitView.currentIndex === _index ? 1 : 0.7
 
+    Maui.OpenWithDialog {id: _openWithDialog}
+
     onCurrentPathChanged:
     {
         syncTerminal(currentBrowser.currentPath)
@@ -122,6 +124,10 @@ Item
             initialItem: Maui.FileBrowser
             {
                 id: _browser
+                Component.onCompleted: {
+                    browserMenu.insertItem(0, openTerminalMenuItem);
+                    itemMenu.insertItem(1, openWithMenuItem)
+                }
                 headerBackground.color: "transparent"
 
                 selectionBar: root.selectionBar
@@ -186,19 +192,6 @@ Item
                 }
 
                 itemMenu.contentData : [
-
-                    MenuSeparator {},
-
-                    MenuItem
-                    {
-                        visible: !control.isExec && openWithDialog
-                        text: i18n("Open with")
-                        icon.name: "document-open"
-                        onTriggered:
-                        {
-                            openWith([_browser.itemMenu.item.path])
-                        }
-                    },
 
                     MenuItem
                     {
@@ -423,7 +416,31 @@ Item
         onClicked: _splitView.currentIndex = _index
     }
 
-    Component.onCompleted: syncTerminal(control.currentPath)
+    MenuItem
+    {
+        text: i18n("Open Terminal")
+        id: openTerminalMenuItem
+        icon.name: "utilities-terminal"
+        onTriggered:
+        {
+            console.log("@gadominguez File: main.qml Path: " + currentPath)
+            inx.openTerminal(currentPath)
+        }
+    }
+
+    MenuItem
+    {
+        visible: !control.isExec && _openWithDialog
+        id: openWithMenuItem
+        text: i18n("Open with")
+        icon.name: "document-open"
+        onTriggered:
+        {
+            openWith([_browser.itemMenu.item.path])
+        }
+    }
+
+    Component.onCompleted: {syncTerminal(control.currentPath)}
     Component.onDestruction: console.log("Destroyed browsers!!!!!!!!")
 
     function syncTerminal(path)
@@ -436,6 +453,21 @@ Item
     {
         terminalVisible = !terminalVisible
         //        Maui.FM.saveSettings("TERMINAL", terminalVisible, "EXTENSIONS")
+    }
+
+
+    /**
+     * For this to work the implementation needs to have passed a selectionBar
+     **/
+    function openWith(urls)
+    {
+        if(urls.length <= 0)
+        {
+            return
+        }
+
+        _openWithDialog.urls = urls
+        _openWithDialog.open()
     }
 
 }
