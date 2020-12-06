@@ -900,8 +900,8 @@ Maui.ApplicationWindow
     }
 
     /**
-      *
-      **/
+     * For this to work the implementation needs to have passed a selectionBar
+     **/
     function openWith(urls)
     {
         if(urls.length <= 0)
@@ -909,8 +909,8 @@ Maui.ApplicationWindow
             return
         }
 
-        openWithDialog.urls = urls
-        openWithDialog.open()
+        _openWithDialog.urls = urls
+        _openWithDialog.open()
     }
 
     /**
