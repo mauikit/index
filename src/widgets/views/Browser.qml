@@ -80,7 +80,7 @@ Item
     SplitView
     {
         anchors.fill: parent
-        anchors.bottomMargin: _selectionBar.visible && (terminalVisible | _stackView.depth == 2) ? _selectionBar.height : 0
+        anchors.bottomMargin: selectionBar.visible && (terminalVisible | _stackView.depth == 2) ? selectionBar.height : 0
         spacing: 0
         orientation: Qt.Vertical
 
@@ -133,7 +133,7 @@ Item
                               {
                               case 0: return Math.floor(48 * 1.5);
                               case 1: return Math.floor(64 * 1.5);
-                              case 2: return Math.floor(96 * 1.5);
+                              case 2: return Math.floor(80 * 1.5);
                               case 3: return Math.floor(124 * 1.5);
                               default: return Math.floor(96 * 1.5);
                               }
@@ -391,16 +391,16 @@ Item
                     }
 
                     //@gadominguez At this moment this function doesnt work because goForward not exist
-                    /*if(event.button === Qt.ForwardButton)
+                    if(event.button === Qt.ForwardButton)
                     {
                         _browser.goForward()
-                    }*/
+                    }
 
                 }
 
                 onItemClicked:
                 {
-                    const item = currentFMList.get(index)
+                    const item = currentFMModel.get(index)
 
                     if(appSettings.singleClick)
                     {
@@ -416,7 +416,7 @@ Item
 
                 onItemDoubleClicked:
                 {
-                    const item = currentFMList.get(index)
+                    const item = currentFMModel.get(index)
 
                     if(!appSettings.singleClick)
                     {
