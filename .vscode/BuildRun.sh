@@ -3,5 +3,5 @@ cd ../../Maui/build
 
 cmake -DCMAKE_INSTALL_PREFIX=/usr .. && make && make install
 
-cd ../../build/
+pwd && cd ../../index-fm/build/ && pwd
 cmake -DCMAKE_INSTALL_PREFIX=/usr .. && make && ./bin/index
