@@ -39,11 +39,11 @@ add source deb http://cz.archive.ubuntu.com/ubuntu groovy main universe
 sudo apt get update && upgrade
 
 **Install KF5 Libraries**
-Download and install KF5 Attica
+Download and install KF5 libs
 ```
 Requeriment: KDE Neon 5.19
 sudo apt install gettext
-sudo apt install libkf5attica-dev libkf5kio-dev libkf5notifications-dev libkf5coreaddons-dev libkf5activities-dev libkf5i18n-dev libkf5declarative-dev libkf5plasma-dev libkf5syntaxhighlighting-dev
+sudo apt install libkf5attica-dev libkf5archive-dev libkf5kio-dev libkf5notifications-dev libkf5coreaddons-dev libkf5activities-dev libkf5i18n-dev libkf5declarative-dev libkf5plasma-dev libkf5syntaxhighlighting-dev
 ```
 **Download MAUI Kit**
 
