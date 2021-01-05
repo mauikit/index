@@ -1,4 +1,4 @@
-cd ../Maui/build
+cd ../../Maui/build
 #sudo rm -r *
 
 cmake -DCMAKE_INSTALL_PREFIX=/usr .. && make && make install
