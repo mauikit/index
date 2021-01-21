@@ -24,6 +24,8 @@ Maui.SideBar
 
     onPlaceClicked:
     {
+        placesList.updateMountPoint()
+        console.log("@gadominguez File: PlacesSideBar.qml Func: OnPlacedClicked ",  path)
         currentBrowser.openFolder(path)
         if(placesSidebar.collapsed)
             placesSidebar.collapse()
@@ -74,6 +76,7 @@ Maui.SideBar
             control.currentIndex = index
             placesList.clearBadgeCount(index)
 
+            console.log("@gadominguez Control Index: ", index)
             placeClicked(model.path)
             if(control.collapsed)
                 control.close()
