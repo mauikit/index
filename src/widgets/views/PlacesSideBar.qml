@@ -29,6 +29,9 @@ Maui.SideBar
         currentBrowser.openFolder(path)
         if(placesSidebar.collapsed)
             placesSidebar.collapse()
+
+        if(_stackView.depth === 2)
+            _stackView.pop()
     }
 
     listView.flickable.header: Maui.ListDelegate
