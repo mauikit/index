@@ -48,7 +48,7 @@ Download and install KF5 Attica
 ```shell
 Requirement: KDE Neon 5.19
 sudo apt install gettext
-sudo apt install libkf5attica-dev libkf5kio-dev libkf5notifications-dev libkf5coreaddons-dev libkf5activities-dev libkf5i18n-dev libkf5declarative-dev libkf5plasma-dev libkf5syntaxhighlighting-dev
+sudo apt install libkf5attica-dev libkf5archive-dev libkf5kio-dev libkf5notifications-dev libkf5coreaddons-dev libkf5activities-dev libkf5i18n-dev libkf5declarative-dev libkf5plasma-dev libkf5syntaxhighlighting-dev
 ```
 
 **Download MAUI Kit**
