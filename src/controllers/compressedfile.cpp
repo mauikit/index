@@ -263,11 +263,12 @@ bool CompressedFile::compress(const QVariantList &files, const QUrl &where, cons
                         // but this function returns if some error occurs so for this reason it is needed to toggle the value
                         error = !error;
                     }
-                    (void)k7zip->close();
-                    break;
+
                 }
-#endif
+                (void)k7zip->close();
                 break;
+#endif
+
             }
             case 3: //.AR
             {
