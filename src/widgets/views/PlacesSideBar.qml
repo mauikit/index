@@ -20,7 +20,7 @@ Maui.SideBar
 
     collapsible: true
     collapsed : !root.isWide
-    preferredWidth: Math.min(Kirigami.Units.gridUnit * (Maui.Handy.isWindows ?  15 : 11), root.width)
+    preferredWidth: Kirigami.Units.gridUnit * (Maui.Handy.isWindows ?  15 : 11)
 
     onPlaceClicked:
     {
@@ -28,7 +28,7 @@ Maui.SideBar
         console.log("@gadominguez File: PlacesSideBar.qml Func: OnPlacedClicked ",  path)
         currentBrowser.openFolder(path)
         if(placesSidebar.collapsed)
-            placesSidebar.collapse()
+            placesSidebar.close()
 
         if(_stackView.depth === 2)
             _stackView.pop()
@@ -41,8 +41,14 @@ Maui.SideBar
         label: i18n("Overview")
         iconName: "start-here-symbolic"
         iconVisible: true
+        isCurrentItem: _stackView.depth === 2
+        onClicked:
+        {
+            if(placesSidebar.collapsed)
+                placesSidebar.close()
 
-        onClicked: _stackView.push(_homeViewComponent)
+            _stackView.push(_homeViewComponent)
+        }
     }
 
     model: Maui.BaseModel
@@ -67,6 +73,7 @@ Maui.SideBar
 
     delegate: Maui.ListDelegate
     {
+        isCurrentItem: ListView.isCurrentItem && _stackView.depth === 1
         width: ListView.view.width
         iconSize: Maui.Style.iconSizes.small
         label: model.label

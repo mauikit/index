@@ -23,6 +23,7 @@ Maui.ApplicationWindow
 {
     id: root
     title: currentTab ? currentTab.title : ""
+    altHeader: Kirigami.Settings.isMobile
 
     readonly property url currentPath : currentBrowser ?  currentBrowser.currentPath : ""
     readonly property Maui.FileBrowser currentBrowser : currentTab && currentTab.browser ? currentTab.browser : null
@@ -48,7 +49,7 @@ Maui.ApplicationWindow
         property bool previewFiles : Kirigami.Settings.isMobile
         property bool restoreSession:  false
         property bool supportSplit : !Kirigami.Settings.isMobile
-        property bool overview : Kirigami.Settings.isMobile
+        property bool overview : false
 
         property int viewType : Maui.FMList.LIST_VIEW
         property int listSize : 0 // s-m-x-xl
@@ -320,13 +321,15 @@ Maui.ApplicationWindow
         {
             id: _browserView
         }
-
-        HomeView
-        {
-            id : _homeViewComponent
-        }
     }
 
+    Component
+    {
+        id : _homeViewComponent
+        HomeView
+        {
+        }
+    }
     Connections
     {
         target: inx
@@ -366,8 +369,8 @@ Maui.ApplicationWindow
             root.openTab(Maui.FM.homePath())
             currentBrowser.settings.viewType = settings.viewType
 
-            if( settings.overview )
-                _stackView.push(_homeViewComponent)
+//            if( settings.overview )
+//                _stackView.push(_homeViewComponent)
         }
 
     }

@@ -216,11 +216,11 @@ ColumnLayout
             MouseArea
             {
                 id: _handle
-                visible: placesSidebar.position == 0 || placesSidebar.collapsed
-                Layout.preferredWidth: Maui.Style.iconSizes.big
-                Layout.fillHeight: true
-                Layout.alignment: Qt.AlignBottom
-                hoverEnabled: true
+                visible: placesSidebar.collapsed
+
+                implicitWidth: Maui.Style.iconSizes.big
+                implicitHeight: implicitWidth
+                hoverEnabled: !Kirigami.Settings.isMobile
                 preventStealing: true
                 propagateComposedEvents: false
 
@@ -253,10 +253,8 @@ ColumnLayout
                     }
                 }
 
-                onClicked: placesSidebar.visible = !placesSidebar.visible
+                onClicked: placesSidebar.open()
             }
-
-
         ]
 
         headBar.leftContent: [
