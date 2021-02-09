@@ -324,8 +324,6 @@ KArchive *CompressedFile::getKArchiveObject(const QUrl &url)
         kArch = new KTar(url.toString().split(QString("file://"))[1]);
     } else if (FMH::getMime(url).contains("application/zip")) {
         kArch = new KZip(url.toString().split(QString("file://"))[1]);
-    } else if (FMH::getMime(url).contains("application/x-archive")) {
-        kArch = new KAr(url.toString().split(QString("file://"))[1]);
     } else if (FMH::getMime(url).contains("application/x-7z-compressed")) {
 #ifdef K7ZIP_H
         kArch = new K7Zip(url.toString().split(QString("file://"))[1]);
